@@ -1,0 +1,10 @@
+:root {
+   --theme-color: #1b1d21;
+   --font-color:  #a7bbe2;
+}
+
+.backgroundImg {
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+}

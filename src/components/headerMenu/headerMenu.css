@@ -1,0 +1,40 @@
+.menuOptions {
+    display: grid;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #060607;
+    opacity: 0.7;
+    grid-template-columns: 50px auto 50px;
+    grid-template-rows: 90px auto;
+    grid-template-areas: 
+    "header header close"
+    ". options .";
+}
+
+.closeButton {
+    display: inline-block;
+    max-width: 30px;
+    max-height: 30px;
+    margin-top: 20px;
+    fill: #a7bbe2;
+    grid-area: close;
+
+}
+
+.menuChoices {
+    padding: 30px;
+    display: flex;
+    flex-direction: row;
+    color: #a7bbe2;
+}
+
+.menuChoices:hover {
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.menuChoicesContainer {
+    grid-area: options;
+    justify-self: center;
+}

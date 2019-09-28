@@ -1,0 +1,24 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.headerFields,
+.headerMenu {
+    display: inline-block;
+    width: 20%;
+    max-width: 30px;
+    padding: 20px;
+    fill: #a7bbe2;
+}
+
+.headerMenu:hover {
+    fill: #FFFFFF;
+}
+
+.headerTitle {
+    padding: 20px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
