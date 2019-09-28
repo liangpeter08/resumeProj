@@ -28,7 +28,9 @@ class Header extends React.Component<HeaderProps, HeaderState> {
         return (
             <div className={css.header}>
                 <div className={css.headerFields} dangerouslySetInnerHTML={{__html: logo}} />
-                <div className={css.headerTitle}>Hollow Cave</div>
+                <div className={css.headerTitle}>Peter Liang</div>
+                <div className={css.headerTitle}>Resume</div>
+                <div className={css.headerTitle}>Contact</div>
                 {!this.state.expand ? <div className={css.headerMenu} dangerouslySetInnerHTML={{__html: menu}}
                     onClick={this.handleMenuClick.bind(this, true)}>
                 </div> : <div className={css.headerMenu}/>}

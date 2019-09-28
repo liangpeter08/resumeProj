@@ -1,6 +1,7 @@
 .header {
     display: flex;
     justify-content: space-between;
+    color: var(--font-color);
 }
 
 .headerFields,
@@ -9,11 +10,10 @@
     width: 20%;
     max-width: 30px;
     padding: 20px;
-    fill: #a7bbe2;
 }
 
 .headerMenu:hover {
-    fill: #FFFFFF;
+    fill: #9e0202;
 }
 
 .headerTitle {

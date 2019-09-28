@@ -12,10 +12,8 @@ export default function HeaderMenu(props: HeaderMenuProps) {
             <div className={css.closeButton} dangerouslySetInnerHTML={{__html: close}}
                 onClick={props.onClose}/>
             <div className={css.menuChoicesContainer}>
-                <div className={css.menuChoices}>Dashboard</div>
-                <div className={css.menuChoices}>Tools</div>
-                <div className={css.menuChoices}>Change Theme</div>
-                <div className={css.menuChoices}>Edit Dashboard</div>
+                <div className={css.menuChoices}>Resume</div>
+                <div className={css.menuChoices}>Contact</div>
             </div>
         </div>          
     );
