@@ -27,13 +27,17 @@ class Header extends React.Component<HeaderProps, HeaderState> {
     render() {
         return (
             <div className={css.header}>
-                <div className={css.headerFields} dangerouslySetInnerHTML={{__html: logo}} />
-                <div className={css.headerTitle}>Peter Liang</div>
-                <div className={css.headerTitle}>Resume</div>
-                <div className={css.headerTitle}>Contact</div>
-                {!this.state.expand ? <div className={css.headerMenu} dangerouslySetInnerHTML={{__html: menu}}
-                    onClick={this.handleMenuClick.bind(this, true)}>
-                </div> : <div className={css.headerMenu}/>}
+                <div className={css.headerLeft}>
+                    <div className={[css.headerSvg, css.hide].join(' ')} dangerouslySetInnerHTML={{__html: logo}} />
+                    <div className={css.headerTitle}>Peter Liang</div>
+                </div>
+                <div className={css.navLinks}>
+                    <div className={css.headerTitle}>Resume</div>
+                    <div className={css.headerTitle}>Contact</div>
+                    {!this.state.expand ? <div className={css.headerSvg} dangerouslySetInnerHTML={{__html: menu}}
+                        onClick={this.handleMenuClick.bind(this, true)}>
+                    </div> : <div className={css.headerMenu}/>}
+                </div>
                 {this.state.expand ? <HeaderMenu onClose={this.handleMenuClick.bind(this, false)} /> : ''}
             </div>
 
