@@ -10,6 +10,7 @@
     grid-template-areas: 
     "header header close"
     ". options .";
+    z-index: 100;
 }
 
 .closeButton {
