@@ -32,6 +32,7 @@
     height: 500px;
     background-color: white;
     opacity: 0.3;
+    z-index: 2;
 }
 
 .content {
