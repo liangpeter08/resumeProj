@@ -4,11 +4,15 @@
 }
 
 .backgroundPic {
-    width: 100vw;
+    width: 80%;
+    justify-self: center;
+    max-width: 1200px;
     height: 500px;
+    align-self: center;
     background-image: url('../../assets/manhattan.jpg');
     background-repeat:no-repeat;
     background-position: top;
+    background-size: minmax(1000, 80%), 500px;
     filter: drop-shadow(1px 3px 2px black);
     z-index: 1;
 }
