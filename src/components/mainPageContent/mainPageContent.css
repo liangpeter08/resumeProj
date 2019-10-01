@@ -1,5 +1,38 @@
 .body {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+}
+
+.backgroundPic {
+    width: 100vw;
+    height: 500px;
+    background-image: url('../../assets/manhattan.jpg');
+    background-repeat:no-repeat;
+    background-position: top;
+    filter: drop-shadow(1px 3px 2px black);
+    z-index: 1;
+}
+
+.backgroundBlur {
+    position: absolute;
+    width: 100vw;
+    height: 500px;
+    background-image: url('../../assets/manhattan.jpg');
+    z-index: -2;
+    filter: blur(2px);
+}
+
+.backgroundWhite {
+    position: absolute;
+    width: 100vw;
+    height: 500px;
+    background-color: white;
+    opacity: 0.3;
+}
+
+.content {
+    display: flex;
     justify-content: center;
+    color: var(--font-color);
+    margin-top: 20px;
 }
