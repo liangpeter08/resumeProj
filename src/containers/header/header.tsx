@@ -29,8 +29,8 @@ class Header extends React.Component<HeaderProps, HeaderState> {
             <div className={css.header}>
                 <div className={css.headerLeft}>
                     <div className={[css.headerSvg, css.hide].join(' ')} dangerouslySetInnerHTML={{__html: logo}} />
-                    <div className={css.headerTitle}>Peter Liang</div>
                 </div>
+                <div className={css.headerTitle}>Peter Liang</div>
                 <div className={css.navLinks}>
                     <div className={css.headerTitle}>Resume</div>
                     <div className={css.headerTitle}>Contact</div>

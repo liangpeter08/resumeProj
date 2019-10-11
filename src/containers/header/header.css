@@ -1,6 +1,6 @@
 .header {
     display: grid;
-    grid-template-columns: minmax(auto, 500px) auto;
+    grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
     grid-template-rows: 68px;
     color: var(--font-color);
@@ -16,6 +16,7 @@
 .headerTitle {
     cursor: pointer;
     padding: 0 20px;
+    text-align: center;
 }
 
 .navLinks,

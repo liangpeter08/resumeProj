@@ -13,6 +13,9 @@ export default function MainPageContent() {
             <div className={css.content}>
                 Under construction
             </div>
+            <div className={[css.content, css.reverseContent].join(' ')}>
+                Under construction
+            </div>
         </div>
     );
 }
