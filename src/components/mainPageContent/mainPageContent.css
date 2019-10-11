@@ -9,7 +9,7 @@
     max-width: 1200px;
     height: 500px;
     align-self: center;
-    background-image: url('../../assets/manhattan.jpg');
+    background-image: url('../../assets/calm.jpg');
     background-repeat:no-repeat;
     background-position: top;
     background-size: minmax(1000, 80%), 500px;
@@ -21,7 +21,7 @@
     position: absolute;
     width: 100vw;
     height: 500px;
-    background-image: url('../../assets/manhattan.jpg');
+    background-image: url('../../assets/calm.jpg');
     z-index: -2;
     filter: blur(2px);
 }
