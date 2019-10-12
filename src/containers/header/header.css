@@ -13,10 +13,12 @@
     fill: var(--hover-color);
 }
 
-.headerTitle {
+.headerTitle, .navTitle {
     cursor: pointer;
     padding: 0 20px;
     text-align: center;
+    font-size: 20px;
+    font-weight: 500;
 }
 
 .navLinks,
@@ -42,5 +44,8 @@
     }
     .show {
         display: inline-block;
+    }
+    .navTitle {
+        display: none;
     }
 }
