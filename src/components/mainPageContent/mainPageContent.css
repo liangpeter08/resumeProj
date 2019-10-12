@@ -109,4 +109,8 @@
     .extra {
         display: none;
     }
+
+    .topIntro {
+        display: none;
+    }
   }
