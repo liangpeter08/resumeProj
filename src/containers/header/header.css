@@ -36,6 +36,7 @@
     width: 20px;
     height: 20px;
     padding: 0 40px;
+    fill: var(--font-color);
 }
 
 @media (max-width: 500px) {
