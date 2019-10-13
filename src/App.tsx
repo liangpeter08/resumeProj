@@ -3,6 +3,7 @@ import './App.css';
 import Header from './containers/header/header';
 import MainPageContent from './containers/mainPageContent/mainPageContent';
 import ResumeContents from './containers/ResumeContents/resumeContent';
+import Notes from './containers/Notes/notes';
 import css from './App.css';
 import {
   BrowserRouter as Router,
@@ -20,9 +21,13 @@ class App extends React.Component {
             <Route path="/resume">
               <ResumeContents />
             </Route>
+            <Route path="/notes">
+              <Notes />
+            </Route>
             <Route path="/">
               <MainPageContent />
             </Route>
+
           </Switch>
 
         </div>

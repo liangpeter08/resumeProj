@@ -18,7 +18,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
         super(props);
         this.state = {
             expand: false
-        }
+        };
     }
 
     handleMenuClick(expand) {

@@ -1,5 +1,6 @@
 import React from 'react';
 import css from './mainPageContent.css';
+import CustomButton from '../../components/customButton/customButton';
 
 export default function MainPageContent() {
     return (
@@ -20,7 +21,7 @@ export default function MainPageContent() {
             </div>
 
             <div className={css.content}>
-                <div className={css.button}>Contact Me</div>
+                <CustomButton text={"Contact Me"} onclick={() => {}} />
             </div>
             <div className={[css.content, css.reverseContent, css.footer].join(' ')}>
                 <span className={css.extra}>The source code is avaliable on</span>

@@ -1,2 +1,2 @@
 /// <reference types="react" />
-export default function MainPageContent(): JSX.Element;
+export default function ResumeContent(): JSX.Element;

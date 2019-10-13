@@ -1,0 +1,13 @@
+.gridTemplate {
+    display: flex;
+    flex-direction: column;
+    grid-template-rows: auto;
+    margin: 30px;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    background-color: var(--content-color);
+}
