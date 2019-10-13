@@ -1,6 +1,7 @@
 import * as React from 'react'
 import css from './headerMenu.css';
 import close from '../../assets/close.svg';
+import {Link} from 'react-router-dom';
 
 interface HeaderMenuProps {
     onClose: (boolean) => void;
@@ -12,8 +13,9 @@ export default function HeaderMenu(props: HeaderMenuProps) {
             <div className={css.closeButton} dangerouslySetInnerHTML={{__html: close}}
                 onClick={props.onClose}/>
             <div className={css.menuChoicesContainer}>
-                <div className={css.menuChoices}>Resume</div>
-                <div className={css.menuChoices}>Contact</div>
+                <Link to="/" className={css.menuChoices} onClick={props.onClose}>Home</Link>
+                <Link to="/resume" className={css.menuChoices} onClick={props.onClose}>Resume</Link>
+                <Link to="/contact" className={css.menuChoices} onClick={props.onClose}>Contact</Link>
             </div>
         </div>          
     );

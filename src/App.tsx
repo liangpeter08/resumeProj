@@ -2,7 +2,7 @@ import * as React from 'react';
 import './App.css';
 import Header from './containers/header/header';
 import MainPageContent from './containers/mainPageContent/mainPageContent';
-import ResumeContents from './containers/resumeContents/resumeContent';
+import ResumeContents from './containers/ResumeContents/resumeContent';
 import css from './App.css';
 import {
   BrowserRouter as Router,
@@ -17,11 +17,11 @@ class App extends React.Component {
         <div className={css.backgroundImg}>
           <Header />
           <Switch>
-            <Route exact path="/">
-              <MainPageContent />
-            </Route>
             <Route path="/resume">
               <ResumeContents />
+            </Route>
+            <Route path="/">
+              <MainPageContent />
             </Route>
           </Switch>
 

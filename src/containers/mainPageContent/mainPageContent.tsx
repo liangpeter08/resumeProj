@@ -10,8 +10,6 @@ export default function MainPageContent() {
             </div>
             <div className={css.backgroundPic}>
                 <div className={css.topIntro}>
-                    <div>Peter</div>
-                    <div>Liang</div>
                 </div>
                 <div className={css.mainIntro}>
                     Welcome to my website

@@ -6,11 +6,12 @@ const path = require('path');
 const app = express();
 
 // Setup view engine
+app.engine('pug', require('pug').__express)
 app.set('view engine', 'pug');
 
 app.use(express.static(path.resolve(path.join(__dirname, '/dist'))));
 
-app.get('/', (req, res) => {
+app.get('/*', (req, res) => {
   res.render('index');
 });
 

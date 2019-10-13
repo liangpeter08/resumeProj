@@ -1,0 +1,6 @@
+.resumeWrapper {
+    display: flex;
+    justify-content: center;
+    margin: 20px 40px;
+    background-color: var(--white);
+}

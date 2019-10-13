@@ -11,7 +11,7 @@
 
 .backgroundImg {
     display: grid;
-    grid-template-rows: auto;
+    grid-template-rows: min-content;
     background-size: cover;
     height: 100%;
     width: 100%;

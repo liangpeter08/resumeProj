@@ -56,7 +56,10 @@ module.exports = {
   },
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
-    port: 4000,
+    port: 8080,
+    historyApiFallback: {
+      index: 'index.html'
+    }
   },
   performance: {
     hints: false,

@@ -32,6 +32,8 @@
     display: flex;
     flex-direction: row;
     color: #a7bbe2;
+    text-decoration: none;
+    font-size: 30px;
 }
 
 .menuChoices:hover {

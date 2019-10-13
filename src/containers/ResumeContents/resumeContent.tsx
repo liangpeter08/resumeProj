@@ -1,8 +1,13 @@
 import React from 'react';
-// import css from './resumeContent.css';
+import ResumeDisplayBox from '../resumeDisplayBox/resumeDisplayBox';
+import css from './resumeContent.css';
 
-export default function MainPageContent() {
+export default function ResumeContent() {
     return (
-        <div>Hello</div>
+        <div className={css.gridTemplate}>
+            <div></div>
+            <ResumeDisplayBox />
+            <div></div>
+        </div>
     );
 }

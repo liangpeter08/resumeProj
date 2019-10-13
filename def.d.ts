@@ -13,4 +13,9 @@ declare module "*.jpg" {
     export = css
 }
 
+declare module "*.png" {
+    var css: any;
+    export = css
+}
+
 

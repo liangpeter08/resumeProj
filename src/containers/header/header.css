@@ -13,12 +13,17 @@
     fill: var(--hover-color);
 }
 
-.headerTitle, .navTitle {
+.headerTitle, .navTitle, .nameTitle {
     cursor: pointer;
     padding: 0 20px;
     text-align: center;
     font-size: 20px;
     font-weight: 500;
+    text-decoration: none;
+}
+
+.nameTitle {
+    text-transform: uppercase;
 }
 
 .navLinks,
@@ -35,11 +40,17 @@
     display: inline-block;
     width: 20px;
     height: 20px;
-    padding: 0 40px;
+    padding: 0 30px 0 15px;
     fill: var(--font-color);
 }
 
-@media (max-width: 500px) {
+.logoSvg {
+    padding: 0 0 0 20px;
+    width: 40px;
+    height: 32px;
+}
+
+@media (max-width: 780px) {
     .hide {
         display: none;
     }
