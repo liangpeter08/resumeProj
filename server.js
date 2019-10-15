@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
   res.sendFile(indexPage);
 });
 
-router2.get(/.*/, (req, res) => {
+router2.get(/\/.*/, (req, res) => {
   res.sendFile(indexPage);
 });
 

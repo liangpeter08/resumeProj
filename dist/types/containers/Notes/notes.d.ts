@@ -7,6 +7,7 @@ declare class Notes extends React.Component<NotesProps, NotesState> {
     constructor(props: NotesProps);
     successLogin(): void;
     failLogin(): void;
+    remove(): void;
     render(): JSX.Element;
 }
 export default Notes;

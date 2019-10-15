@@ -2,6 +2,7 @@ import React from 'react';
 import css from './notes.css';
 import { GoogleLogin } from 'react-google-login';
 import CustomButton from '../../components/customButton/customButton';
+import Note from '../../components/note/note';
 
 interface NotesProps {
 
@@ -25,6 +26,9 @@ class Notes extends React.Component<NotesProps, NotesState> {
 
     }
 
+    remove() {
+    }
+
     render() {
         return (
             <div className={css.gridTemplate}>
@@ -38,7 +42,9 @@ class Notes extends React.Component<NotesProps, NotesState> {
                         cookiePolicy={'single_host_origin'}
                     />
                 </div>
-                <div></div>
+                <div>
+                    <Note remove={this.remove}></Note>
+                </div>
             </div>
         );
     }
