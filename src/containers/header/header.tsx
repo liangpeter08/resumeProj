@@ -30,14 +30,14 @@ class Header extends React.Component<HeaderProps, HeaderState> {
             <div className={css.header}>
                 <div className={css.headerLeft}>
                     <img className={[css.headerSvg, css.logoSvg].join(' ')} src={logo}/>
-                    <Link to="/" className={[css.headerTitle, css.hide].join(' ')}>Software Engineer</Link>
+                    <Link to="/view/" className={[css.headerTitle, css.hide].join(' ')}>Software Engineer</Link>
                 </div>
                 <Link to="/" className={css.nameTitle}>
                     Peter Liang
                 </Link>
                 <div className={css.navLinks}>
-                    <Link to="/resume" className={css.navTitle}>Resume</Link>
-                    <Link to="/contact" className={css.navTitle}>Contact</Link>
+                    <Link to="/view/resume" className={css.navTitle}>Resume</Link>
+                    <Link to="/view/contact" className={css.navTitle}>Contact</Link>
                     {!this.state.expand ? <div className={css.headerSvg} dangerouslySetInnerHTML={{__html: menu}}
                         onClick={this.handleMenuClick.bind(this, true)}>
                     </div> : <div className={css.headerSvg}></div>}
