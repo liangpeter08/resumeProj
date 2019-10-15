@@ -35,3 +35,19 @@ Mirror-push to the new repository.
 
 cd old-repository.git
 git push --mirror https://github.com/exampleuser/new-repository.git
+
+
+
+## Postgres setup
+
+# account
+CREATE TABLE user_account(
+   user_id serial PRIMARY KEY,
+   google_id VARCHAR (100) UNIQUE NOT NULL,
+   family_name VARCHAR(50)
+   given_name VARCHAR(50)
+   image_url TEXT
+   email VARCHAR (355) UNIQUE NOT NULL,
+   created_on TIMESTAMP NOT NULL,
+   last_login TIMESTAMP
+);

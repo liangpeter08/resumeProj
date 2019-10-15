@@ -9,6 +9,8 @@ const app = express();
 
 const indexPage = path.join(__dirname, '/dist',  '/index.html');
 
+const rootCloudFunc = 'https://us-central1-resumeproj.cloudfunctions.net/';
+
 var corsOptions = {
   origin: 'http://liangpeter.com',
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
@@ -23,7 +25,7 @@ app.get('/view/*', cors(corsOptions), (req, res) => {
 app.get('/api/user', cors(corsOptions), (req, res, next) => {
   console.log('get user');
 
-  axios.get('https://us-central1-resumeproj.cloudfunctions.net/test1').then((res) => console.log(res));
+  axios.get(rootCloudFunc + 'test1').then((res) => console.log(res));
 });
 
 app.use(cors(corsOptions), express.static(path.resolve(path.join(__dirname, '/dist'))));
