@@ -18,12 +18,12 @@ class Notes extends React.Component<NotesProps, NotesState> {
         this.state = {
         };
     }
-    successLogin () {
-
+    successLogin (response: any) {
+        console.log(response);
     }
 
-    failLogin () {
-
+    failLogin (response: any) {
+        console.log(response);
     }
 
     remove() {
