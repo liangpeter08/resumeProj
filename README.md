@@ -1,3 +1,11 @@
+## Resume Proj
+
+- reactjs
+- nodejs/expressjs
+- axios
+- cloud function
+- postgres
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

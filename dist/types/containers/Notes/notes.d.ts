@@ -5,8 +5,9 @@ interface NotesState {
 }
 declare class Notes extends React.Component<NotesProps, NotesState> {
     constructor(props: NotesProps);
-    successLogin(): void;
-    failLogin(): void;
+    componentDidMount(): void;
+    successLogin(response: any): void;
+    failLogin(response: any): void;
     remove(): void;
     render(): JSX.Element;
 }

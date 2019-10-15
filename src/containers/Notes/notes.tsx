@@ -3,6 +3,7 @@ import css from './notes.css';
 import { GoogleLogin } from 'react-google-login';
 import CustomButton from '../../components/customButton/customButton';
 import Note from '../../components/note/note';
+import axios from 'axios';
 
 interface NotesProps {
 
@@ -18,6 +19,11 @@ class Notes extends React.Component<NotesProps, NotesState> {
         this.state = {
         };
     }
+
+    componentDidMount() {
+        axios.get('/api/user').then((res) => console.log(res));
+    }
+
     successLogin (response: any) {
         console.log(response);
     }
@@ -37,9 +43,11 @@ class Notes extends React.Component<NotesProps, NotesState> {
                     <GoogleLogin
                         clientId="239128037217-26f613okjt62dqbhh0p3kkdfa7lnfhkl.apps.googleusercontent.com"
                         buttonText="Login"
-                        onSuccess={this.successLogin}
-                        onFailure={this.failLogin}
+                        onSuccess={this.successLogin.bind(this)}
+                        onFailure={this.failLogin.bind(this)}
                         cookiePolicy={'single_host_origin'}
+                        accessType={'offline'}
+                        isSignedIn={true}
                     />
                 </div>
                 <div>
