@@ -45,3 +45,7 @@ git push --mirror https://github.com/exampleuser/new-repository.git
 );`
 
 INSERT INTO USER_ACCOUNT (google_id,family_name,given_name,image_url,email, created_on, last_login) VALUES ('10000', 'test', 'name', 'http://image', 'test@gmail.com',CURRENT_TIMESTAMP,CURRENT_TIMESTAMP);
+
+
+# FOR LATER
+add id_token for google authentication

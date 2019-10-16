@@ -19,7 +19,7 @@ pg_config = {
 # Connection pools reuse connections between invocations,
 # and handle dropped or expired connections automatically.
 pg_pool = None
-
+table_name = 'user_account'
 
 def __connect(host):
     """
@@ -51,18 +51,38 @@ def postgres(query):
 def getUser(request):
     print('create user')
     if request.args and 'google_id' in request.args:
-        get_query = "SELECT * FROM user_account WHERE google_id='{}'".format(str(request.args.get('google_id')))
+        get_query = "SELECT * FROM {} WHERE google_id='{}'".format(table_name, str(request.args.get('google_id')))
         print(get_query)
         return postgres(get_query)
 
 
 def updateUser(request):
     print('update user')
+    request_json = request.get_json(silent=True)
+    columns = []
+    if request_json:
+        for prop in request_json:
+            if prop == 'google_id':
+                continue
+            columns.append(prop + ' = ' + request_json[prop])
+    else: 
+        return abort(400)
+    query = "UPDATE {} SET {} WHERE google_id='{}'".format(table_name, ', '.join(columns), request_json[prop])
+    return postgres(get_query)
+
 
 def createUser(request):
     print('create user')
+    prefix = "INSERT INTO {} (google_id,family_name,given_name,image_url,email, created_on) VALUES".format(table_name)
+    req = request.get_json(silent=True)
+    if req and "google_id" in req and "email" in req
+    else: 
+        return abort(400)
+    suffix = ', '.join([req["google_id"],req["family_name"],req["given_name"],req["image_url"],req["email"], "CURRENT_TIMESTAMP"])
+    return postgres(prefix + '(' + suffix + ')')
 
 def user(request):
+    # TODO: add user authentication
     if request.method == 'GET':
         return getUser(request)
     elif request.method == 'PUT':
