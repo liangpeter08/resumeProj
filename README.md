@@ -6,18 +6,10 @@
 - cloud function
 - postgres
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
 ### `npm start`
 
 Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-# burgerApp
+Open [http://localhost:3000](http://localhost:8080) to view it in the browser.
 
 ### DEPLOY APP
 `gcloud app deploy`
@@ -40,14 +32,16 @@ git push --mirror https://github.com/exampleuser/new-repository.git
 
 ## Postgres setup
 
-# account
-CREATE TABLE user_account(
+# user_account
+`CREATE TABLE USER_ACCOUNT(
    user_id serial PRIMARY KEY,
    google_id VARCHAR (100) UNIQUE NOT NULL,
-   family_name VARCHAR(50)
-   given_name VARCHAR(50)
-   image_url TEXT
+   family_name VARCHAR(50),
+   given_name VARCHAR(50),
+   image_url VARCHAR,
    email VARCHAR (355) UNIQUE NOT NULL,
    created_on TIMESTAMP NOT NULL,
    last_login TIMESTAMP
-);
+);`
+
+INSERT INTO USER_ACCOUNT (google_id,family_name,given_name,image_url,email, created_on, last_login) VALUES ('10000', 'test', 'name', 'http://image', 'test@gmail.com',CURRENT_TIMESTAMP,CURRENT_TIMESTAMP);

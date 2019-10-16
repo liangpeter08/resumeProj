@@ -3,7 +3,6 @@ from os import getenv
 from psycopg2 import OperationalError
 from psycopg2.pool import SimpleConnectionPool
 
-# TODO(developer): specify SQL connection details
 CONNECTION_NAME = getenv(
   'INSTANCE_CONNECTION_NAME',
   '<YOUR INSTANCE CONNECTION NAME>')
@@ -31,7 +30,7 @@ def __connect(host):
     pg_pool = SimpleConnectionPool(1, 1, **pg_config)
 
 
-def postgres():
+def postgres(query):
     global pg_pool
 
     if not pg_pool:
@@ -43,13 +42,18 @@ def postgres():
     # Keep any declared in global scope (e.g. pg_pool) for later reuse.
     with pg_pool.getconn() as conn:
         cursor = conn.cursor()
-        cursor.execute('SELECT NOW() as now')
-        results = cursor.fetchone()
+        cursor.execute(query)
+        results = cursor.fetchall()
         pg_pool.putconn(conn)
+        print(str(results[0]))
         return str(results[0])
 
 def getUser(request):
     print('create user')
+    if request.args and 'google_id' in request.args:
+        get_query = "SELECT * FROM user_account WHERE google_id='{}'".format(str(request.args.get('google_id')))
+        print(get_query)
+        return postgres(get_query)
 
 
 def updateUser(request):
@@ -60,11 +64,11 @@ def createUser(request):
 
 def user(request):
     if request.method == 'GET':
-        getUser(request)
+        return getUser(request)
     elif request.method == 'PUT':
-        updateUser(request)
+        return updateUser(request)
     elif request.method == 'POST':
-        createUser(request)
+        return createUser(request)
     else:
         return abort(405)
 
