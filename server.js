@@ -24,8 +24,32 @@ app.get('/view/*', cors(corsOptions), (req, res) => {
 
 app.get('/api/user', cors(corsOptions), (req, res, next) => {
   console.log('get user');
+  try {
+    console.log(req.query);
+    axios.get(rootCloudFunc + 'user', {params: req.query})
+      .then((result) => {
+        console.log(result.data);
+        res.status(200).json(result.data);
+      })
+      .catch((err) => res.send(err));
+  } catch(err) {
+    console.log('error:' + req);
+  }
+});
 
-  axios.get(rootCloudFunc + 'test1').then((res) => console.log(res));
+app.get('/api/notes', cors(corsOptions), (req, res, next) => {
+  console.log('get notes');
+  try {
+    console.log(req.query);
+    axios.get(rootCloudFunc + 'notes', {params: req.query})
+      .then((result) => {
+        console.log(result.data);
+        res.status(200).json(result.data);
+      })
+      .catch((err) => res.send(err));
+  } catch(err) {
+    console.log('error:' + req);
+  }
 });
 
 app.use(cors(corsOptions), express.static(path.resolve(path.join(__dirname, '/dist'))));

@@ -21,7 +21,12 @@ class Notes extends React.Component<NotesProps, NotesState> {
     }
 
     componentDidMount() {
-        axios.get('/api/user').then((res) => console.log(res));
+        axios.get('/api/user', {params: {
+            google_id: '10001'
+        }}).then(({data}) => console.log(data));
+        axios.get('/api/notes', {params: {
+            email: 'test@gmail.com'
+        }}).then(({data}) => console.log(data));
     }
 
     successLogin (response: any) {

@@ -4,6 +4,7 @@ from psycopg2 import OperationalError
 from psycopg2.pool import SimpleConnectionPool
 import json
 from flask import abort
+import datetime
 
 CONNECTION_NAME = getenv(
   'INSTANCE_CONNECTION_NAME',
@@ -33,6 +34,11 @@ def __connect(host):
     pg_pool = SimpleConnectionPool(1, open_conn, **pg_config)
 
 
+def myconverter(o):
+    if isinstance(o, datetime.datetime):
+        return o.__str__()
+
+
 def postgres(query, method):
     global pg_pool
 
@@ -48,8 +54,9 @@ def postgres(query, method):
         cursor.execute(query)
         if method == 'GET' and cursor.rowcount > 0:
             results = cursor.fetchall()
-            print(str(results))
-            return str(results)
+            tmp = json.dumps(results, default=myconverter)
+            print(str(tmp))
+            return str(tmp)
         else:
             conn.commit()
             return json.dumps({"rowCount": cursor.rowcount})
