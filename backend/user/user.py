@@ -84,9 +84,11 @@ def createUser(request):
     print('create user')
     prefix = "INSERT INTO {} (google_id,family_name,given_name,image_url,email, created_on) VALUES".format(table_name)
     req = request.get_json(silent=True)
+    print(req)
     if not req or not "google_id" in req or not "email" in req:
         return abort(400)
-    suffix = ', '.join([req["google_id"],req["family_name"],req["given_name"],req["image_url"],req["email"], "CURRENT_TIMESTAMP"])
+    suffix =  ', '.join("'{0}'".format(w) for w in [req["google_id"],req["family_name"],req["given_name"],req["image_url"],req["email"]])
+    suffix = suffix + ' , CURRENT_TIMESTAMP'
     query = prefix + '(' + suffix + ')'
     print(query)
     return postgres(query, request.method)

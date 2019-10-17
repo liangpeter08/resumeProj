@@ -49,3 +49,5 @@ INSERT INTO USER_ACCOUNT (google_id,family_name,given_name,image_url,email, crea
 
 # FOR LATER
 add id_token for google authentication
+backend is very brittle, need to improve
+improve postgres queries
