@@ -48,8 +48,8 @@ def postgres(query, method):
         cursor.execute(query)
         if method == 'GET' and cursor.rowcount > 0:
             results = cursor.fetchall()
-            print(str(results[0]))
-            return str(results[0])
+            print(str(results))
+            return str(results)
         else:
             conn.commit()
             return json.dumps({"rowCount": cursor.rowcount})
@@ -81,7 +81,7 @@ def updateNote(request):
         return abort(400)
 
     # update version
-    column.append('version = version + 1')
+    columns.append('version = version + 1')
 
     query = "UPDATE {} SET {} WHERE email='{}'".format(table_name, ', '.join(columns), request_json['email'])
     print(query)
