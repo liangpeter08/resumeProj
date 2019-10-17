@@ -46,7 +46,7 @@ def postgres(query, method):
     with pg_pool.getconn() as conn:
         cursor = conn.cursor()
         cursor.execute(query)
-        if method == 'GET':
+        if method == 'GET' and cursor.rowcount > 0:
             results = cursor.fetchall()
             print(str(results[0]))
             return str(results[0])
@@ -59,7 +59,7 @@ def postgres(query, method):
 def getUser(request):
     print('create user')
     if request.args and 'google_id' in request.args:
-        get_query = "SELECT * FROM {} WHERE google_id='{}'".format(table_name, str(request.args.get('google_id')))
+        get_query = "SELECT * FROM {} WHERE google_id='{}'".format(table_name, str(request.args.get('google_id').strip('""')))
         print(get_query)
         return postgres(get_query, request.method)
 

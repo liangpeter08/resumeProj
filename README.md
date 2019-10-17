@@ -33,7 +33,7 @@ git push --mirror https://github.com/exampleuser/new-repository.git
 ## Postgres setup
 
 # user_account
-`CREATE TABLE USER_ACCOUNT(
+`CREATE TABLE user_account(
    user_id serial PRIMARY KEY,
    google_id VARCHAR (100) UNIQUE NOT NULL,
    family_name VARCHAR(50),
@@ -44,7 +44,21 @@ git push --mirror https://github.com/exampleuser/new-repository.git
    last_login TIMESTAMP
 );`
 
-INSERT INTO USER_ACCOUNT (google_id,family_name,given_name,image_url,email, created_on, last_login) VALUES ('10000', 'test', 'name', 'http://image', 'test@gmail.com',CURRENT_TIMESTAMP,CURRENT_TIMESTAMP);
+INSERT INTO user_account (google_id,family_name,given_name,image_url,email, created_on, last_login) VALUES ('10000', 'test', 'name', 'http://image', 'test@gmail.com',CURRENT_TIMESTAMP,CURRENT_TIMESTAMP);
+
+# notes
+
+`CREATE TABLE notes(
+   note_id serial PRIMARY KEY,
+   google_id VARCHAR (100) UNIQUE NOT NULL,
+   email VARCHAR (355) UNIQUE NOT NULL,
+   created_on TIMESTAMP NOT NULL,
+   last_modified TIMESTAMP,
+   version INT,
+   allowed_email VARCHAR (355)[]
+);`
+
+INSERT INTO notes (google_id,email,created_on,last_modified,version,allowed_email) VALUES ('10001', 'test@gmail.com', CURRENT_TIMESTAMP, NULL, 0, '{"test@gmail.com"}');
 
 
 # FOR LATER
