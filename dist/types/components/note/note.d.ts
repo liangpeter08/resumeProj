@@ -1,15 +1,8 @@
-import React from 'react';
+import { FunctionComponent } from 'react';
+import NoteSchema from '../../util/objectDef';
 interface NotesProps {
     remove: () => void;
+    saved?: NoteSchema;
 }
-interface NotesState {
-    text: string;
-    title: string;
-}
-declare class Note extends React.Component<NotesProps, NotesState> {
-    constructor(props: NotesProps);
-    editNote(e: React.FormEvent<HTMLTextAreaElement>): void;
-    editTitle(e: React.FormEvent<HTMLInputElement>): void;
-    render(): JSX.Element;
-}
+declare const Note: FunctionComponent<NotesProps>;
 export default Note;

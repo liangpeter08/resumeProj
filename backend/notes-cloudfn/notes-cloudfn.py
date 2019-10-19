@@ -1,6 +1,7 @@
 from os import getenv
 
 from psycopg2 import OperationalError
+from psycopg2.extras import RealDictCursor
 from psycopg2.pool import SimpleConnectionPool
 import json
 from flask import abort
@@ -50,7 +51,7 @@ def postgres(query, method):
     # Remember to close SQL resources declared while running this function.
     # Keep any declared in global scope (e.g. pg_pool) for later reuse.
     with pg_pool.getconn() as conn:
-        cursor = conn.cursor()
+        cursor = conn.cursor(cursor_factory=RealDictCursor)
         cursor.execute(query)
         if method == 'GET' and cursor.rowcount > 0:
             results = cursor.fetchall()
@@ -74,7 +75,7 @@ def getNotes(request):
 # "UPDATE user_notes SET version = version + 1, title = 'blah', content = 'rest', 
 # allowed_email = '{"newSet" (always append self)}', last_modified = CURRENT_TIMESTAMP WHERE email='{}'"
 def updateNote(request):
-    print('update user')
+    print('update Note')
     request_json = request.get_json(silent=True)
     columns = []
     if request_json:
@@ -90,9 +91,21 @@ def updateNote(request):
     # update version
     columns.append('version = version + 1')
 
-    query = "UPDATE {} SET {} WHERE email='{}'".format(table_name, ', '.join(columns), request_json['email'])
+    query = "UPDATE {} SET {} WHERE email='{}' AND ".format(table_name, ', '.join(columns), request_json['email'], request_json['note_id'])
     print(query)
     return postgres(query, request.method)
+
+# delete the specific note
+def deleteNote(request):
+    print('delete Note')
+    request_json = request.get_json(silent=True)
+    # update version
+    columns.append('version = version + 1')
+
+    query = "DELETE FROM {} WHERE note_id='{}' AND ".format(table_name, request_json['note_id'])
+    print(query)
+    return postgres(query, request.method)
+
 
 # INSERT INTO user_notes (google_id,email,title,content,created_on,last_modified,version,allowed_email) VALUES
 # ('10001', 'test@gmail.com', 'random', 'first note', CURRENT_TIMESTAMP, NULL, 0, '{"test@gmail.com"}');
@@ -122,6 +135,8 @@ def notes(request):
         return updateNote(request)
     elif request.method == 'POST':
         return createNote(request)
+    elif request.method == 'DELETE':
+        return deleteNote(request)
     else:
         return abort(405)
 
