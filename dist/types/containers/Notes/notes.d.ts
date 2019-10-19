@@ -1,7 +1,10 @@
 import React from 'react';
+import NoteSchema, { UserInfo } from '../../util/objectDef';
 interface NotesProps {
 }
 interface NotesState {
+    notes: NoteSchema[];
+    userInfo?: UserInfo;
 }
 declare class Notes extends React.Component<NotesProps, NotesState> {
     constructor(props: NotesProps);

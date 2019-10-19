@@ -9,3 +9,13 @@ export default interface NoteSchema {
     title: string;
     version: number;
 };
+
+export interface UserInfo {
+    created_on: string,
+    family_name: string,
+    given_name: string,
+    google_id: string,
+    image_url:  string,
+    last_login: string,
+    user_id: number,
+}

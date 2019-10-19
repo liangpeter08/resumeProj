@@ -3,6 +3,7 @@ import css from './notes.css';
 import { GoogleLogin } from 'react-google-login';
 import CustomButton from '../../components/customButton/customButton';
 import Note from '../../components/note/note';
+import NoteSchema, {UserInfo} from '../../util/objectDef';
 import axios from 'axios';
 
 interface NotesProps {
@@ -10,13 +11,16 @@ interface NotesProps {
 };
 
 interface NotesState {
-
+    notes: NoteSchema[];
+    userInfo?: UserInfo;
 };
 
 class Notes extends React.Component<NotesProps, NotesState> {
     constructor(props: NotesProps) {
         super(props);
         this.state = {
+            notes: [],
+            userInfo: undefined,
         };
     }
 
@@ -26,7 +30,7 @@ class Notes extends React.Component<NotesProps, NotesState> {
         }}).then(({data}) => console.log(data));
         axios.get('/api/notes', {params: {
             email: 'test@gmail.com'
-        }}).then(({data}) => console.log(data));
+        }}).then(({data}) => this.setState({notes: data}));
     }
 
     successLogin (response: any) {
@@ -41,6 +45,10 @@ class Notes extends React.Component<NotesProps, NotesState> {
     }
 
     render() {
+        const notesElem = this.state.notes.map((noteState) => 
+            <Note saved={noteState} remove={this.remove}></Note>
+        );
+
         return (
             <div className={css.gridTemplate}>
                 <div className={css.controls}>
@@ -56,7 +64,7 @@ class Notes extends React.Component<NotesProps, NotesState> {
                     />
                 </div>
                 <div>
-                    <Note remove={this.remove}></Note>
+                    {notesElem}
                 </div>
             </div>
         );
