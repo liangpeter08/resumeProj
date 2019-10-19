@@ -91,7 +91,7 @@ def updateNote(request):
     # update version
     columns.append('version = version + 1')
 
-    query = "UPDATE {} SET {} WHERE email='{}' AND ".format(table_name, ', '.join(columns), request_json['email'], request_json['note_id'])
+    query = "UPDATE {} SET {} WHERE email='{}' AND note_id='{}'".format(table_name, ', '.join(columns), request_json['email'], request_json['note_id'])
     print(query)
     return postgres(query, request.method)
 

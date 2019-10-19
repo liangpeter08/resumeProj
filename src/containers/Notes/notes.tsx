@@ -45,7 +45,7 @@ class Notes extends React.Component<NotesProps, NotesState> {
     }
 
     render() {
-        const notesElem = this.state.notes.map((noteState) => 
+        const notesElem = this.state.notes && this.state.notes.map((noteState) => 
             <Note saved={noteState} remove={this.remove}></Note>
         );
 

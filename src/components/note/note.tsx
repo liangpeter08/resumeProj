@@ -2,6 +2,7 @@ import React, { FunctionComponent, useState } from 'react';
 import css from './note.css';
 import closeButton from '../../assets/close.svg';
 import NoteSchema from '../../util/objectDef';
+import axios from 'axios';
 
 //Note Prop
 interface NotesProps {
@@ -24,7 +25,12 @@ const Note : FunctionComponent<NotesProps> = ({remove, saved}: NotesProps) => {
 
     const savenNote = () => {
         if (saved && saved.note_id) { 
-            
+            axios.put('/api/notes', {
+                note_id: saved.note_id,
+                content: note,
+                title: title,
+                email: 'test@gmail.com',
+            }).then((data) => console.log(data));
         }
     };
 

@@ -5,11 +5,12 @@ const path = require('path');
 var cors = require('cors');
 
 const serverApi = require('./serverApi');
-
+var bodyParser = require('body-parser')
 const app = express();
 
 const indexPage = path.join(__dirname, '/dist',  '/index.html');
-
+// parse application/json
+app.use(bodyParser.json())
 
 
 var corsOptions = {
