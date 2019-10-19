@@ -45,9 +45,9 @@ class Notes extends React.Component<NotesProps, NotesState> {
     }
 
     render() {
-        const notesElem = this.state.notes && this.state.notes.map((noteState) => 
-            <Note saved={noteState} remove={this.remove}></Note>
-        );
+        const notesElem = this.state.notes && this.state.notes.length > 0 ? this.state.notes.map((noteState) => 
+            <Note key={noteState.note_id} saved={noteState} remove={this.remove}></Note>
+        ) : <Note key={this.state.notes.length + 1} remove={this.remove}></Note>;
 
         return (
             <div className={css.gridTemplate}>

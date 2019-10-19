@@ -12,8 +12,14 @@ interface NotesProps {
 
 // Note state
 const Note : FunctionComponent<NotesProps> = ({remove, saved}: NotesProps) => {
-    const [note, setNote] = useState(saved && saved.content ? saved.content : '');
-    const [title, setTitle] = useState(saved && saved.title ? saved.title : '');
+    const [note, setNote] = useState('');
+    const [title, setTitle] = useState('');
+
+
+    React.useEffect(() => {
+        setNote(saved ? saved.content : '');
+        setTitle(saved ? saved.title : '');
+    }, [saved])
 
     const editNote = (e : React.FormEvent<HTMLTextAreaElement>) => {
         setNote(e.currentTarget.value);
