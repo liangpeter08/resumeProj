@@ -1,15 +1,20 @@
 .wrapper {
-    background-color: var(--content-color);
-    border: 1px solid var(--border-color);
-    width: 200px;
+    background-color: var(--note-content);
+    border: none;
+    width: 194px;
     min-height: 200px;
     resize: none;
     font-size: 18px;
+    padding: 3px;
+    
 }
 
 .header {
     display: flex;
-    border: 1px solid var(--border-color);
+    border: none;
+    width: min-content;
+    background-color: var(--note-header);
+    align-items: center;
     width: 200px;
 }
 
@@ -21,6 +26,23 @@
 }
 
 .title {
-    width: 100px;
-    height: 30px;
+    width: 118px;
+    height: 18px;
+    margin: 5px 8px;
+    border: none;
+    background-color: var(--note-header);
+}
+
+.saveButton {
+    width: 18px;
+    margin: 5px 10px;
+    cursor: pointer;
+}
+
+.deleteButton {
+    cursor: pointer;
+}
+
+.noteWrapper {
+    margin: 10px;
 }

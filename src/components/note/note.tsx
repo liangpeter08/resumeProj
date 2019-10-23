@@ -1,8 +1,10 @@
 import React, { FunctionComponent, useState } from 'react';
 import css from './note.css';
-import closeButton from '../../assets/close.svg';
+import closeButton from '../../assets/delete.svg';
 import NoteSchema from '../../util/objectDef';
 import axios from 'axios';
+import saveButton from '../../assets/save2.svg';
+
 
 //Note Prop
 interface NotesProps {
@@ -29,7 +31,7 @@ const Note : FunctionComponent<NotesProps> = ({remove, saved}: NotesProps) => {
         setTitle(e.currentTarget.value);
     };
 
-    const savenNote = () => {
+    const saveNote = () => {
         if (saved && saved.note_id) { 
             axios.put('/api/notes', {
                 note_id: saved.note_id,
@@ -41,12 +43,13 @@ const Note : FunctionComponent<NotesProps> = ({remove, saved}: NotesProps) => {
     };
 
     return (
-        <>
+        <div className={css.noteWrapper}>
             <div className={css.header}>
                 <input className={css.title} onChange={editTitle} value={title} />
+                <div className={css.saveButton} dangerouslySetInnerHTML={{__html: saveButton}}
+                    onClick={saveNote}/>
                 <div className={css.deleteButton} dangerouslySetInnerHTML={{__html: closeButton}}
                         onClick={remove}/>
-                <button onClick={savenNote}>Save</button>
             </div>
             <textarea
                 className={css.wrapper}
@@ -54,7 +57,7 @@ const Note : FunctionComponent<NotesProps> = ({remove, saved}: NotesProps) => {
                 value={note}
                 onChange={editNote}>
             </textarea>
-        </>
+        </div>
     );
 };
 

@@ -1,13 +1,13 @@
 export default interface NoteSchema {
     allowed_email: string[];
     content: string;
-    created_on: string;
+    created_on?: string;
     email: string;
     google_id: string;
-    last_modified: string;
-    note_id: number;
+    last_modified?: string;
+    note_id?: number;
     title: string;
-    version: number;
+    version?: number;
 }
 export interface UserInfo {
     created_on: string;
@@ -17,4 +17,5 @@ export interface UserInfo {
     image_url: string;
     last_login: string;
     user_id: number;
+    email: string;
 }

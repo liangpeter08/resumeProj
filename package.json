@@ -7,9 +7,9 @@
   "scripts": {
     "bundleProd": "webpack --mode production",
     "bundle": "webpack --mode production",
-    "prestart": "npm run bundle",
     "dev": "webpack-dev-server --mode development",
-    "start": "node server.js"
+    "start": "node server.js",
+    "watch": "webpack --watch"
   },
   "devDependencies": {
     "@babel/core": "^7.1.5",

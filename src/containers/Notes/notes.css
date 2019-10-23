@@ -11,3 +11,8 @@
     padding: 10px;
     background-color: var(--content-color);
 }
+
+.allNotes {
+    display: flex;
+    flex-wrap: wrap;
+}

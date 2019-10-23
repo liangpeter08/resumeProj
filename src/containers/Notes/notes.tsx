@@ -15,6 +15,7 @@ interface NotesState {
     userInfo?: UserInfo;
 };
 
+
 class Notes extends React.Component<NotesProps, NotesState> {
     constructor(props: NotesProps) {
         super(props);
@@ -24,13 +25,34 @@ class Notes extends React.Component<NotesProps, NotesState> {
         };
     }
 
+    get getNewNote() {
+        const userInfo = this.state.userInfo ? this.state.userInfo : {
+            email: 'none',
+            google_id: '',
+        };
+        const defaultNote = {
+            allowed_email: [userInfo.email],
+            title: 'New Note',
+            content: '',
+            email: userInfo.email,
+            google_id: userInfo.google_id,
+        };
+        return defaultNote;
+    }
+
     componentDidMount() {
         axios.get('/api/user', {params: {
             google_id: '10001'
         }}).then(({data}) => console.log(data));
         axios.get('/api/notes', {params: {
-            email: 'test@gmail.com'
-        }}).then(({data}) => this.setState({notes: data}));
+            email: 'test@gmail.com',
+        }}).then(({data}) => {
+            if (data.length) {
+                this.setState({notes: data});
+            } else {
+                this.setState({notes: [this.getNewNote]});
+            }
+        });
     }
 
     successLogin (response: any) {
@@ -41,18 +63,26 @@ class Notes extends React.Component<NotesProps, NotesState> {
         console.log(response);
     }
 
-    remove() {
+    remove(index) {
+        console.log(this.state.notes);
+        const array = [...this.state.notes];
+        array.splice(index, 1);
+        this.setState({notes: array});
+    }
+
+    createNewNote() {
+        this.setState({notes: [...this.state.notes, this.getNewNote]});
     }
 
     render() {
-        const notesElem = this.state.notes && this.state.notes.length > 0 ? this.state.notes.map((noteState) => 
-            <Note key={noteState.note_id} saved={noteState} remove={this.remove}></Note>
-        ) : <Note key={this.state.notes.length + 1} remove={this.remove}></Note>;
+        const notesElem = (this.state.notes || []).map((noteState, index) => 
+            <Note key={index} saved={noteState} remove={this.remove.bind(this, index)}></Note>
+        );
 
         return (
             <div className={css.gridTemplate}>
                 <div className={css.controls}>
-                    <CustomButton text={'Create New'} onclick={() => {}} />
+                    <CustomButton text={'Create New'} onclick={this.createNewNote.bind(this)} />
                     <GoogleLogin
                         clientId="239128037217-26f613okjt62dqbhh0p3kkdfa7lnfhkl.apps.googleusercontent.com"
                         buttonText="Login"
@@ -63,7 +93,7 @@ class Notes extends React.Component<NotesProps, NotesState> {
                         isSignedIn={true}
                     />
                 </div>
-                <div>
+                <div className={css.allNotes}>
                     {notesElem}
                 </div>
             </div>
