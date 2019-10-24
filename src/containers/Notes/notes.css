@@ -6,8 +6,9 @@
 }
 
 .controls {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
     padding: 10px;
     background-color: var(--theme-color);
 }
@@ -26,4 +27,21 @@
 
 .createNewButton {
     padding: 10px;
+    width: 100px;
+    justify-self: start;
+}
+
+.loginNotification {
+    color: var(--hover-color);
+    margin-right: 10px;
+}
+
+.noteTitle {
+    justify-self: center;
+}
+
+.loginTab {
+    display: flex;
+    flex-wrap: wrap;
+    justify-self: end;
 }

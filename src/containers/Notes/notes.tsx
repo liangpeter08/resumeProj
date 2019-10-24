@@ -41,33 +41,46 @@ class Notes extends React.Component<NotesProps, NotesState> {
     }
 
     componentDidMount() {
-        axios.get('/api/user', {params: {
-            google_id: '10001'
-        }}).then(({data}) => {
-            console.log(data);
-            this.setState({
-                userInfo: {
-                    email: 'test@gmail.com',
-                    google_id: '10001',
-                }
-            });
-        });
+        // axios.get('/api/user', {params: {
+        //     google_id: '10001'
+        // }}).then(({data}) => {
+        //     console.log(data);
+        //     this.setState({
+        //         userInfo: {
+        //             email: 'test@gmail.com',
+        //             google_id: '10001',
+        //         }
+        //     });
+        // });
         this.fetchNotes();
     }
 
     fetchNotes() {
-        axios.get('/api/notes', {params: {
-            email: 'test@gmail.com',
-        }}).then(({data}) => {
-            if (data.length) {
-                this.setState({notes: data});
-            } else {
-                this.setState({notes: [this.getNewNote]});
-            }
-        });
+        if (this.state.userInfo) {
+            axios.get('/api/notes', {params: {
+                email: this.state.userInfo && this.state.userInfo.email,
+            }}).then(({data}) => {
+                if (data.length) {
+                    this.setState({notes: data});
+                } else {
+                    this.setState({notes: [this.getNewNote]});
+                }
+            });
+         } else {
+            this.setState({notes: [this.getNewNote]});
+         }
     }
 
     successLogin (response: any) {
+        const {profileObj} = response;
+        const {email, familyName, givenName, googleId, imageUrl} = profileObj;
+        this.setState({userInfo: {
+            email,
+            family_name: familyName,
+            given_name: givenName,
+            google_id: googleId,
+            image_url: imageUrl,
+        }});
         console.log(response);
     }
 
@@ -99,15 +112,25 @@ class Notes extends React.Component<NotesProps, NotesState> {
                 <div className={css.controls}>
                     <CustomButton additionalClass={css.createNewButton} text={'Create New'} onclick={this.createNewNote.bind(this)} />
                     <div className={css.noteTitle}>Notes</div>
-                    <GoogleLogin
-                        clientId="239128037217-26f613okjt62dqbhh0p3kkdfa7lnfhkl.apps.googleusercontent.com"
-                        buttonText="Login"
-                        onSuccess={this.successLogin.bind(this)}
-                        onFailure={this.failLogin.bind(this)}
-                        cookiePolicy={'single_host_origin'}
-                        accessType={'offline'}
-                        isSignedIn={true}
-                    />
+                    {!this.state.userInfo ?
+                        <div className={css.loginTab}>
+                            <div className={css.loginNotification}>
+                                Please Login in
+                            </div>
+                            <GoogleLogin
+                                clientId="239128037217-26f613okjt62dqbhh0p3kkdfa7lnfhkl.apps.googleusercontent.com"
+                                buttonText="Login"
+                                onSuccess={this.successLogin.bind(this)}
+                                onFailure={this.failLogin.bind(this)}
+                                cookiePolicy={'single_host_origin'}
+                                accessType={'offline'}
+                                isSignedIn={true}
+                            />
+                        </div> :
+                        <div className={css.loginTab}>
+                            <div>{this.state.userInfo.given_name} {this.state.userInfo.family_name}</div>
+                            <div><img src={this.state.userInfo.image_url}></img></div>
+                        </div>}
                 </div>
                 <div className={css.allNotes}>
                     {notesElem}
