@@ -15,6 +15,7 @@
 .allNotes {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .noteTitle {
