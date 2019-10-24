@@ -118,10 +118,12 @@ def createNote(request):
     if not req:
       abort(400)
 
+    allowed_emails = '{' + str(req["allowed_email"]).replace("'", '"').strip('[]') + '}'
+
     for param in required:
       if not param in req:
         return abort(400)
-    suffix =  ', '.join("'{0}'".format(w) for w in [req["google_id"],req["email"],req["title"],req["content"], 0, req["allowed_email"]])
+    suffix =  ', '.join("'{0}'".format(w) for w in [req["google_id"],req["email"],req["title"],req["content"], 0, allowed_emails])
     suffix = suffix + ' , CURRENT_TIMESTAMP' + ' , CURRENT_TIMESTAMP'
     query = prefix + '(' + suffix + ')'
     print(query)

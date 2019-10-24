@@ -40,15 +40,30 @@ const apiDef = (app, cors) => {
     app.put('/api/notes', cors(corsOptions), (req, res, next) => {
         console.log('update notes');
         try {
-        console.log(req.body);
-        axios.put(rootCloudFunc + 'notes', req.body)
-            .then((result) => {
-            console.log(result.data);
-            res.status(200).json(result.data);
-            })  
-            .catch((err) => res.send(err));
+            console.log(req.body);
+            axios.put(rootCloudFunc + 'notes', req.body)
+                .then((result) => {
+                console.log(result.data);
+                res.status(200).json(result.data);
+                })  
+                .catch((err) => res.send(err));
         } catch(err) {
-        console.log('error:' + req);
+            console.log('error:' + req);
+        }
+    });
+
+    app.post('/api/notes', cors(corsOptions), (req, res, next) => {
+        console.log('create notes');
+        try {
+            console.log(req.body);
+            axios.post(rootCloudFunc + 'notes', req.body)
+                .then((result) => {
+                    console.log(result.data);
+                    res.status(200).json(result.data);
+                })
+                .catch((err) => res.send(err));
+        } catch(err) {
+            console.log('error:' + req);
         }
     });
 }

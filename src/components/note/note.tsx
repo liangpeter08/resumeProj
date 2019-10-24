@@ -9,7 +9,7 @@ import saveButton from '../../assets/save2.svg';
 //Note Prop
 interface NotesProps {
     remove: () => void;
-    saved?: NoteSchema;
+    saved: NoteSchema;
 };
 
 // Note state
@@ -32,20 +32,26 @@ const Note : FunctionComponent<NotesProps> = ({remove, saved}: NotesProps) => {
     };
 
     const saveNote = () => {
-        if (saved && saved.note_id) { 
+        if (saved.note_id) { 
             axios.put('/api/notes', {
                 note_id: saved.note_id,
                 content: note,
-                title: title,
-                email: 'test@gmail.com',
-            }).then((data) => console.log(data));
+                title,
+                email: saved.email,
+            });
+        } else {
+            axios.post('/api/notes',
+                Object.assign(saved, {
+                    content: note,
+                    title,
+                }));
         }
     };
 
     return (
         <div className={css.noteWrapper}>
             <div className={css.header}>
-                <input className={css.title} onChange={editTitle} value={title} />
+                <input className={css.title} onChange={editTitle} value={title} placeholder={'New Note'} />
                 <div className={css.saveButton} dangerouslySetInnerHTML={{__html: saveButton}}
                     onClick={saveNote}/>
                 <div className={css.deleteButton} dangerouslySetInnerHTML={{__html: closeButton}}

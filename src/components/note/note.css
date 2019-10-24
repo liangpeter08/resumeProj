@@ -6,7 +6,8 @@
     resize: none;
     font-size: 18px;
     padding: 3px;
-    
+    /* for safari */
+    margin: 0;
 }
 
 .header {

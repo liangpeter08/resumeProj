@@ -32,7 +32,7 @@ class Notes extends React.Component<NotesProps, NotesState> {
         };
         const defaultNote = {
             allowed_email: [userInfo.email],
-            title: 'New Note',
+            title: '',
             content: '',
             email: userInfo.email,
             google_id: userInfo.google_id,
@@ -43,7 +43,15 @@ class Notes extends React.Component<NotesProps, NotesState> {
     componentDidMount() {
         axios.get('/api/user', {params: {
             google_id: '10001'
-        }}).then(({data}) => console.log(data));
+        }}).then(({data}) => {
+            console.log(data);
+            this.setState({
+                userInfo: {
+                    email: 'test@gmail.com',
+                    google_id: '10001',
+                }
+            });
+        });
         axios.get('/api/notes', {params: {
             email: 'test@gmail.com',
         }}).then(({data}) => {
@@ -82,7 +90,8 @@ class Notes extends React.Component<NotesProps, NotesState> {
         return (
             <div className={css.gridTemplate}>
                 <div className={css.controls}>
-                    <CustomButton text={'Create New'} onclick={this.createNewNote.bind(this)} />
+                    <CustomButton additionalClass={css.createNewButton} text={'Create New'} onclick={this.createNewNote.bind(this)} />
+                    <div className={css.noteTitle}>Notes</div>
                     <GoogleLogin
                         clientId="239128037217-26f613okjt62dqbhh0p3kkdfa7lnfhkl.apps.googleusercontent.com"
                         buttonText="Login"

@@ -7,12 +7,22 @@
 
 .controls {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     padding: 10px;
-    background-color: var(--content-color);
+    background-color: var(--theme-color);
 }
 
 .allNotes {
     display: flex;
     flex-wrap: wrap;
+}
+
+.noteTitle {
+    color: var(--font-color);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.createNewButton {
+    padding: 10px;
 }
