@@ -52,6 +52,10 @@ class Notes extends React.Component<NotesProps, NotesState> {
                 }
             });
         });
+        this.fetchNotes();
+    }
+
+    fetchNotes() {
         axios.get('/api/notes', {params: {
             email: 'test@gmail.com',
         }}).then(({data}) => {
@@ -72,25 +76,22 @@ class Notes extends React.Component<NotesProps, NotesState> {
     }
 
     remove(index) {
-        console.log(this.state.notes);
         const array = [...this.state.notes];
-        array.splice(index, 1);
+        const removedNote: NoteSchema  = array.splice(index, 1)[0];
         this.setState({notes: array});
+        if (removedNote.note_id) {
+            axios.delete('/api/notes', {data: {note_id: removedNote.note_id || ''}});
+        }
     }
 
     createNewNote() {
         this.setState({notes: [...this.state.notes, this.getNewNote]});
     }
 
-    finalize(index, saved) {
-        const array = [...this.state.notes];
-        array.splice(index, 1, saved);
-        this.setState({notes: array});
-    }
 
     render() {
         const notesElem = (this.state.notes || []).map((noteState, index) => 
-            <Note key={index} saved={noteState} finalize={(saved) => this.finalize(index, saved)} remove={this.remove.bind(this, index)}></Note>
+            <Note key={index} saved={noteState} refresh={this.fetchNotes.bind(this)} remove={this.remove.bind(this, index)}></Note>
         );
 
         return (

@@ -98,11 +98,9 @@ def updateNote(request):
 # delete the specific note
 def deleteNote(request):
     print('delete Note')
-    request_json = request.get_json(silent=True)
-    # update version
-    columns.append('version = version + 1')
+    request_json = request.get_json(force=True)
 
-    query = "DELETE FROM {} WHERE note_id='{}' RETURNING *".format(table_name, request_json['note_id'])
+    query = "DELETE FROM {} WHERE note_id='{}'".format(table_name, request_json['note_id'])
     print(query)
     return postgres(query, request.method)
 

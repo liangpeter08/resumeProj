@@ -66,6 +66,21 @@ const apiDef = (app, cors) => {
             console.log('error:' + req);
         }
     });
+
+    app.delete('/api/notes', cors(corsOptions), (req, res, next) => {
+        console.log('delete notes');
+        try {
+            console.log(req.body);
+            axios.delete(rootCloudFunc + 'notes', {data: req.body})
+                .then((result) => {
+                    console.log(result.data);
+                    res.status(200).json(result.data);
+                })
+                .catch((err) => res.send(err));
+        } catch(err) {
+            console.log('error:' + req);
+        }
+    });
 }
 
 module.exports = {
