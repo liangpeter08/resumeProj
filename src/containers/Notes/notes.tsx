@@ -74,13 +74,17 @@ class Notes extends React.Component<NotesProps, NotesState> {
     successLogin (response: any) {
         const {profileObj} = response;
         const {email, familyName, givenName, googleId, imageUrl} = profileObj;
-        this.setState({userInfo: {
-            email,
-            family_name: familyName,
-            given_name: givenName,
-            google_id: googleId,
-            image_url: imageUrl,
-        }});
+        this.setState((state) => ({
+            userInfo: {
+                email,
+                family_name: familyName,
+                given_name: givenName,
+                google_id: googleId,
+                image_url: imageUrl,
+            },
+            notes: state.notes.map(note => Object.assign(note, {allowedEmail: [email], google_id: googleId, email}))
+        }));
+        this.fetchNotes();
         console.log(response);
     }
 
@@ -125,8 +129,8 @@ class Notes extends React.Component<NotesProps, NotesState> {
                             />
                         </div> :
                         <div className={css.loginTab}>
-                            <div>{this.state.userInfo.given_name} {this.state.userInfo.family_name}</div>
-                            <div><img src={this.state.userInfo.image_url}></img></div>
+                            <div className={css.loginName}>{this.state.userInfo.given_name} {this.state.userInfo.family_name}</div>
+                            <img src={this.state.userInfo.image_url}></img>
                         </div>}
                 </div>
                 <div className={css.allNotes}>

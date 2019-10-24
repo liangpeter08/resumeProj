@@ -38,5 +38,10 @@
 .loginTab {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     justify-self: end;
+}
+
+.loginName {
+    padding-right: 5px;
 }
