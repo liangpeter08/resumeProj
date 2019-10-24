@@ -114,9 +114,6 @@ class Notes extends React.Component<NotesProps, NotesState> {
                     <div className={css.noteTitle}>Notes</div>
                     {!this.state.userInfo ?
                         <div className={css.loginTab}>
-                            <div className={css.loginNotification}>
-                                Please Login in
-                            </div>
                             <GoogleLogin
                                 clientId="239128037217-26f613okjt62dqbhh0p3kkdfa7lnfhkl.apps.googleusercontent.com"
                                 buttonText="Login"

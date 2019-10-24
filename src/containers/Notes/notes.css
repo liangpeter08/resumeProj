@@ -31,11 +31,6 @@
     justify-self: start;
 }
 
-.loginNotification {
-    color: var(--hover-color);
-    margin-right: 10px;
-}
-
 .noteTitle {
     justify-self: center;
 }
