@@ -102,7 +102,7 @@ def deleteNote(request):
     # update version
     columns.append('version = version + 1')
 
-    query = "DELETE FROM {} WHERE note_id='{}' AND ".format(table_name, request_json['note_id'])
+    query = "DELETE FROM {} WHERE note_id='{}' RETURNING *".format(table_name, request_json['note_id'])
     print(query)
     return postgres(query, request.method)
 
@@ -125,7 +125,7 @@ def createNote(request):
         return abort(400)
     suffix =  ', '.join("'{0}'".format(w) for w in [req["google_id"],req["email"],req["title"],req["content"], 0, allowed_emails])
     suffix = suffix + ' , CURRENT_TIMESTAMP' + ' , CURRENT_TIMESTAMP'
-    query = prefix + '(' + suffix + ')'
+    query = prefix + '(' + suffix + ')' + 'RETURNING *'
     print(query)
     return postgres(query, request.method)
 

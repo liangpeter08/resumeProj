@@ -10,6 +10,7 @@ import saveButton from '../../assets/save2.svg';
 interface NotesProps {
     remove: () => void;
     saved: NoteSchema;
+    finalize?: (saved : NoteSchema) => void;
 };
 
 // Note state
@@ -44,7 +45,7 @@ const Note : FunctionComponent<NotesProps> = ({remove, saved}: NotesProps) => {
                 Object.assign(saved, {
                     content: note,
                     title,
-                }));
+                })).then(({data}) => console.log(data));
         }
     };
 

@@ -82,9 +82,15 @@ class Notes extends React.Component<NotesProps, NotesState> {
         this.setState({notes: [...this.state.notes, this.getNewNote]});
     }
 
+    finalize(index, saved) {
+        const array = [...this.state.notes];
+        array.splice(index, 1, saved);
+        this.setState({notes: array});
+    }
+
     render() {
         const notesElem = (this.state.notes || []).map((noteState, index) => 
-            <Note key={index} saved={noteState} remove={this.remove.bind(this, index)}></Note>
+            <Note key={index} saved={noteState} finalize={(saved) => this.finalize(index, saved)} remove={this.remove.bind(this, index)}></Note>
         );
 
         return (

@@ -20,6 +20,7 @@ declare class Notes extends React.Component<NotesProps, NotesState> {
     failLogin(response: any): void;
     remove(index: any): void;
     createNewNote(): void;
+    finalize(index: any, saved: any): void;
     render(): JSX.Element;
 }
 export default Notes;
