@@ -83,8 +83,7 @@ class Notes extends React.Component<NotesProps, NotesState> {
                 image_url: imageUrl,
             },
             notes: state.notes.map(note => Object.assign(note, {allowedEmail: [email], google_id: googleId, email}))
-        }));
-        this.fetchNotes();
+        }), () => this.fetchNotes());
         console.log(response);
     }
 
@@ -130,7 +129,7 @@ class Notes extends React.Component<NotesProps, NotesState> {
                         </div> :
                         <div className={css.loginTab}>
                             <div className={css.loginName}>{this.state.userInfo.given_name} {this.state.userInfo.family_name}</div>
-                            <img src={this.state.userInfo.image_url}></img>
+                            <img className={css.profilePicSize} src={this.state.userInfo.image_url}></img>
                         </div>}
                 </div>
                 <div className={css.allNotes}>

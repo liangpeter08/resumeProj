@@ -1,6 +1,11 @@
 .resumeWrapper {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     margin: 20px 40px;
+    padding: 10px 30px;
     background-color: var(--white);
+    color: var(--font-color);
+    font-size: var(--font-size-small);
 }
+
+/* @media print { */

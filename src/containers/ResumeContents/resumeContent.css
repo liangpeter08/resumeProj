@@ -3,3 +3,14 @@
     grid-template-columns: 1fr 4fr 1fr;
     grid-template-rows: auto;
 }
+
+.gridTemplateCollapsed {
+    display: grid;
+    grid-template-columns: 4fr 2fr;
+    grid-template-rows: auto;
+}
+
+.hide {
+    transition: 0.5s;
+    width: 0;
+}

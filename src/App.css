@@ -8,7 +8,10 @@
    --reverse-content: #E3F2F3;
    --note-header: #FDFCC0;
    --note-content: #FBF6BE;
-
+   --font-size-medium: 20px;
+   --font-size-small: 14px;
+   --resume-border-color: #6ab7bd;
+   --resume-content-hoverBackground: #d9fcff;
 }
 
 .backgroundImg {
@@ -16,10 +19,8 @@
     grid-template-rows: min-content;
     background-size: cover;
     position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 body { 

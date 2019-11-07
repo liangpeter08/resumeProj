@@ -1,0 +1,21 @@
+.nameHeader {
+    height: min-content;
+    text-align: center;
+    font-size: var(--font-size-medium);
+}
+
+.contactInfo {
+    display: flex;
+    justify-content: space-between;
+}
+
+.resumeHeaderWrapper {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.resumeHeaderWrapper:hover {
+    border: 2px solid var(--resume-border-color);
+    background-color: var(--resume-content-hoverBackground);
+    transition: 0.4s;
+}
