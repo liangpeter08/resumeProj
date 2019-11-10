@@ -13,6 +13,7 @@
    --font-size-small: 14px;
    --resume-border-color: #6ab7bd;
    --resume-content-hoverBackground: #d9fcff;
+   --print-small: 14pt;
 }
 
 .backgroundImg {

@@ -4,11 +4,13 @@
     margin: 20px 40px;
     padding: 10px 30px;
     justify-self: center;
-    width: 600px;
+    width: 8.5in;
+    height: 11in;
     max-width: 70vw;
+    max-height: calc(70vw * 11 / 8.5);
     background-color: var(--white);
     color: var(--font-color);
-    font-size: var(--font-size-small);
+    font-size: var(--print-small);
 }
 
 /* @media print { */

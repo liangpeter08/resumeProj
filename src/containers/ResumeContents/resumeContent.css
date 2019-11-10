@@ -1,12 +1,14 @@
 .gridTemplate {
     display: grid;
-    grid-template-columns: min-content 4fr min-content;
+    grid-template-columns: min-content min-content min-content;
+    justify-self: center;
     grid-template-rows: auto;
 }
 
 .collapsedGrid {
     display: grid;
-    grid-template-columns: min-content 4fr min-content;
+    grid-template-columns: min-content min-content min-content;
+    justify-self: center;
     grid-template-rows: auto;
 }
 
