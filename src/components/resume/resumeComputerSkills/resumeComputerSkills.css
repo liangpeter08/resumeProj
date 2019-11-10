@@ -1,20 +1,22 @@
-.nameHeader {
+.title{
     height: min-content;
-    text-align: center;
     font-size: var(--font-size-medium);
+    font-weight: 600;
+    width: 160px;
+    padding-right: 50px;
 }
 
-.contactInfo {
+.skillList {
+    display: inline-block;
+}
+
+.resumeComputerSkillsWrapper {
     display: flex;
-    justify-content: space-between;
-}
-
-.resumeHeaderWrapper {
     padding: 10px;
     cursor: pointer;
 }
 
-.resumeHeaderWrapper:hover {
+.resumeComputerSkillsWrapper:hover {
     border: 2px solid var(--resume-border-color);
     background-color: var(--resume-content-hoverBackground);
     transition: 0.4s;

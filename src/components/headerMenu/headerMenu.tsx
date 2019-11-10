@@ -4,7 +4,7 @@ import close from '../../assets/close.svg';
 import {Link} from 'react-router-dom';
 
 interface HeaderMenuProps {
-    onClose: (boolean) => void;
+    onClose: () => void;
 };
 
 export default function HeaderMenu(props: HeaderMenuProps) {

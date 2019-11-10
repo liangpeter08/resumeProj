@@ -95,7 +95,7 @@ class Notes extends React.Component<NotesProps, NotesState> {
         console.log(response);
     }
 
-    remove(index) {
+    remove(index : number) {
         const array = [...this.state.notes];
         const removedNote: NoteSchema  = array.splice(index, 1)[0];
         this.setState({notes: array});

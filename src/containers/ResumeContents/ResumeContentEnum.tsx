@@ -1,8 +1,10 @@
 import ResumeHeaderDetails from '../../components/resume/details/resumeHeader/resumeHeaderDetails';
+import ResumeComputerSkills from '../../components/resume/details/resumeComputerSkills/resumeComputerSkills';
 import React from 'react';
 
 enum ContentSelections {
     ContactInfo,
+    ComputerSkills,
 };
 
 namespace ContentSelections {
@@ -10,7 +12,11 @@ namespace ContentSelections {
         if (component === null) return;
         switch (component) {
             case ContentSelections.ContactInfo:
-                return <ResumeHeaderDetails></ResumeHeaderDetails>
+                return <ResumeHeaderDetails></ResumeHeaderDetails>;
+            case ContentSelections.ComputerSkills:
+                return <ResumeComputerSkills></ResumeComputerSkills>;
+            default:
+                return <></>;
         }
     }
 };

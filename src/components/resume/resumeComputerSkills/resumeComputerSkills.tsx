@@ -1,26 +1,25 @@
 import React, { FunctionComponent } from 'react';
-import css from './resumeHeader.css';
+import css from './resumeComputerSkills.css';
 //Note Prop
-interface ResumeHeaderProps {
+interface ResumeComputerSkillsProps {
     selectOnClick: () => void;
 };
 
 // Note state
-const resumeHeader : FunctionComponent<ResumeHeaderProps> = ({selectOnClick}: ResumeHeaderProps) => {
+const resumeComputerSkills : FunctionComponent<ResumeComputerSkillsProps> = ({selectOnClick}: ResumeComputerSkillsProps) => {
 
     return (
-        <div className={css.resumeHeaderWrapper} onClick={selectOnClick}>
-            <div className={css.nameHeader}>Peter Liang</div>
-            <div className={css.contactInfo}>
-                <div>Website: liangpeter.com</div>
-                <div>929-310-1298</div>
+        <div className={css.resumeComputerSkillsWrapper} onClick={selectOnClick}>
+            <div className={css.title}>
+                Computer Skills
             </div>
-            <div className={css.contactInfo}>
-                <div>liangpeter08@gmail.com</div>
-                <div>Github: liangpeter08</div>
+            <div className={css.skillList}>
+                <div><b>Web Development</b>: AngularJS, React, JavaScript, Typescript, Thrift, Flask, gRPC, Jinja, HTML, CSS, ASP.NET, ExpressJs, Webpack, Rollup, D3.js</div>
+                <div><b>Languages/Database</b>: Go,Java, Python, C, C++, PostgreSQL, mongoDB, Elastic-Search</div>
+                <div><b>Application</b>: Visual Studio Code, IntelliJ, Docker, Postman, Amazon Redshift, Github, Gerrit, Jenkins, Datadog, Librato, Sentry, SendGrid, MailChimp, SendWithUs, Filestack</div>
             </div>
         </div>
     );
 };
 
-export default resumeHeader;
+export default resumeComputerSkills;
