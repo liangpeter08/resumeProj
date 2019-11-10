@@ -1,16 +1,26 @@
 .gridTemplate {
     display: grid;
-    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-columns: min-content 4fr min-content;
     grid-template-rows: auto;
 }
 
-.gridTemplateCollapsed {
+.collapsedGrid {
     display: grid;
-    grid-template-columns: 4fr 2fr;
+    grid-template-columns: min-content 4fr min-content;
     grid-template-rows: auto;
 }
 
-.hide {
+.placeHolder,.content {
+    transition: 0.5s;
+    width: 10vw;
+}
+
+.collapsedGrid .placeHolder {
     transition: 0.5s;
     width: 0;
 }
+
+.collapsedGrid .content {
+    transition: 0.5s;
+    width: 40vw;
+};

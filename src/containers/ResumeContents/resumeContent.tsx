@@ -7,11 +7,19 @@ import ContentSelections from './ResumeContentEnum';
 const ResumeContent : FunctionComponent = () => {
     const [selectedContent, setSelectedContent] = useState<ContentSelections | null>(null);
 
+    const handleSelection = (selected : ContentSelections) => {
+        if (selectedContent === selected) {
+            setSelectedContent(null);
+        } else {
+            setSelectedContent(selected);
+        }
+    };
+
     return (
-        <div className={selectedContent === null ? css.gridTemplate : css.gridTemplateCollapsed}>
-            {selectedContent === null && <div/>}
-            <ResumeDisplayBox setSelected={(selected: ContentSelections) => setSelectedContent(selected)}/>
-            <div>
+        <div className={selectedContent === null ? css.gridTemplate : css.collapsedGrid}>
+            {<div className={css.placeHolder}/>}
+            <ResumeDisplayBox setSelected={(selected: ContentSelections) => handleSelection(selected)}/>
+            <div className={css.content}>
                 {ContentSelections.getComponent(selectedContent)}
             </div>
         </div>
