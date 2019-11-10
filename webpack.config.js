@@ -67,6 +67,7 @@ module.exports = {
   devtool: '#eval-source-map',
   plugins: [
     new HtmlWebpackPlugin({
+      favicon: "./public/favicon.png",
       template: "./public/index.html",
       inject: true,
     }),
