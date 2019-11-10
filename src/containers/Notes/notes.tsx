@@ -60,8 +60,10 @@ class Notes extends React.Component<NotesProps, NotesState> {
             axios.get('/api/notes', {params: {
                 email: this.state.userInfo && this.state.userInfo.email,
             }}).then(({data}) => {
+                const loadedNotes : NoteSchema[] = data;
                 if (data.length) {
-                    this.setState({notes: data});
+                    // sort by creation id
+                    this.setState({notes: loadedNotes.sort((a, b) =>  ((a.note_id || 0) > (b.note_id || 0) ? 1 : -1))});
                 } else {
                     this.setState({notes: [this.getNewNote]});
                 }
