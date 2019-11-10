@@ -10,6 +10,18 @@
     grid-template-rows: auto;
 }
 
+@media only screen and (max-width: 700px) {
+    .gridTemplate {
+        grid-template-columns: 0 1fr 0;
+    }
+    
+    .collapsedGrid {
+        display: flex;
+        flex-flow: column;
+        flex-direction: row-reverse;
+    }
+}
+
 .placeHolder,.content {
     transition: 0.5s;
     width: 10vw;
@@ -23,4 +35,7 @@
 .collapsedGrid .content {
     transition: 0.5s;
     width: 40vw;
+    margin: 20px 10px;
+    font-size: var(--font-size-large);
+    color: var(--font-color);
 };

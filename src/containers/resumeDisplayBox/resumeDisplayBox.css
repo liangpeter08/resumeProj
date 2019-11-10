@@ -3,6 +3,9 @@
     flex-direction: column;
     margin: 20px 40px;
     padding: 10px 30px;
+    justify-self: center;
+    width: 600px;
+    max-width: 70vw;
     background-color: var(--white);
     color: var(--font-color);
     font-size: var(--font-size-small);

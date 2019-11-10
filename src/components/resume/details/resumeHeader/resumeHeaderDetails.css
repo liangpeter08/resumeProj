@@ -1,0 +1,9 @@
+.wrapper {
+    font-size: var(--font-size-medium);
+    padding-top: 20px;
+    word-wrap: break-word;
+}
+
+.wrapper div {
+    padding: 10px 0;
+}
