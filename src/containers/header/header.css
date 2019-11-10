@@ -4,6 +4,7 @@
     align-items: center;
     grid-template-rows: 68px;
     color: var(--font-color);
+    width: 100vw;
     font-size: 20px;
     /* border-bottom: 1px solid var(--border-color); */
     background-color: var(--content-color);
