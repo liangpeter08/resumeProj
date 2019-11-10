@@ -13,6 +13,7 @@ interface NotesProps {
 interface NotesState {
     notes: NoteSchema[];
     userInfo?: UserInfo;
+    showDescription: boolean;
 };
 
 
@@ -22,6 +23,7 @@ class Notes extends React.Component<NotesProps, NotesState> {
         this.state = {
             notes: [],
             userInfo: undefined,
+            showDescription: false
         };
     }
 
@@ -116,7 +118,7 @@ class Notes extends React.Component<NotesProps, NotesState> {
             <div className={css.gridTemplate}>
                 <div className={css.controls}>
                     <CustomButton additionalClass={css.createNewButton} text={'Create New'} onclick={this.createNewNote.bind(this)} />
-                    <div className={css.noteTitle}>Notes</div>
+                    <div className={css.noteTitle} onClick={() => this.setState(({showDescription}) => ({showDescription: !showDescription}))}>Notes</div>
                     {!this.state.userInfo ?
                         <div className={css.loginTab}>
                             <GoogleLogin
@@ -133,6 +135,9 @@ class Notes extends React.Component<NotesProps, NotesState> {
                             <div className={css.loginName}>{this.state.userInfo.given_name} {this.state.userInfo.family_name}</div>
                             <img className={css.profilePicSize} src={this.state.userInfo.image_url}></img>
                         </div>}
+                </div>
+                <div className={this.state.showDescription ? css.description : css.hideDescription}>
+                    You may save persistant notes here based on google id. This page uses google Cloud Function to store notes into the Postgres Database.
                 </div>
                 <div className={css.allNotes}>
                     {notesElem}

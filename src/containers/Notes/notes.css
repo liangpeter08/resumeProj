@@ -50,3 +50,15 @@
     width: 50px;
     border-radius: 25px;
 }
+
+.description {
+    text-align: center;
+    transition: 0.5s;
+    height: auto;
+}
+
+.hideDescription {
+    overflow: hidden;
+    height: 0;
+    transition: 0.5s;
+}
